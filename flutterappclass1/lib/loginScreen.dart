@@ -1,41 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutterappclass1/homepage.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
+class LoginScreen extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+  State<StatefulWidget> createState() {
+    return _LoginScreenState();
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class _LoginScreenState extends State<LoginScreen> {
+  String? dropdownvalue;
+  List<String> items = ['Admin', 'User'];
 
-  final String title;
+  var emailAddress = TextEditingController();
+  var password = TextEditingController();
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  bool passwordVisible = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -55,14 +37,12 @@ class _MyHomePageState extends State<MyHomePage> {
               const SizedBox(height: 16.0),
               const Text(
                 'SHRINE',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold
-                ),
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
               Container(
                 height: 100,
               ),
-             const SizedBox(
+              const SizedBox(
                 width: 400,
                 child: TextField(
                   // obscureText: true,
@@ -76,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Container(
                 height: 12,
               ),
-            const  SizedBox(
+              const SizedBox(
                 width: 400,
                 child: TextField(
                   obscureText: true,
@@ -84,7 +64,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       border: OutlineInputBorder(),
                       labelText: 'Password',
                       filled: true,
-                      
                       hintText: 'Enter Password'),
                 ),
               ),
@@ -96,13 +75,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   TextButton(
                     child: Text("CANCEL"),
-                    onPressed: (){
-                    print("hello");
-                  },
+                    onPressed: () {
+                      print("hello");
+                    },
                   ),
-                  const SizedBox(width: 50,),
-                  ElevatedButton(onPressed: (){print("hello");}, child: Text("Next"))
-        
+                  const SizedBox(
+                    width: 50,
+                  ),
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return (HomePage());
+                        }));
+                      },
+                      child: Text("Next"))
                 ],
               )
             ],
