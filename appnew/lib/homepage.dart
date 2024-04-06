@@ -3,6 +3,7 @@ import 'package:appnew/apiModel.dart';
 // import 'package:appnew/todo_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 // import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
